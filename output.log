@@ -1,0 +1,62 @@
+[2025-03-17 00:35:41,277] torch.distributed.run: [WARNING] 
+[2025-03-17 00:35:41,277] torch.distributed.run: [WARNING] *****************************************
+[2025-03-17 00:35:41,277] torch.distributed.run: [WARNING] Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+[2025-03-17 00:35:41,277] torch.distributed.run: [WARNING] *****************************************
+flash_attn import failed: No module named 'flash_attn'
+flash_attn import failed: No module named 'flash_attn'
+Starting rank=0, seed=4048, world_size=2.
+[[34m2025-03-17 00:35:45[0m] Experiment directory created at results/DiT-S-2-8E2A2TP
+Starting rank=1, seed=4049, world_size=2.
+An error occurred while trying to fetch /data/DiT-MoE/DiT-MoE/sd-vae-ft-mse: Error no file named diffusion_pytorch_model.safetensors found in directory /data/DiT-MoE/DiT-MoE/sd-vae-ft-mse.
+Defaulting to unsafe serialization. Pass `allow_pickle=False` to raise an error instead.
+An error occurred while trying to fetch /data/DiT-MoE/DiT-MoE/sd-vae-ft-mse: Error no file named diffusion_pytorch_model.safetensors found in directory /data/DiT-MoE/DiT-MoE/sd-vae-ft-mse.
+Defaulting to unsafe serialization. Pass `allow_pickle=False` to raise an error instead.
+[[34m2025-03-17 00:35:53[0m] DiT Parameters: 199,307,552
+[[34m2025-03-17 00:35:59[0m] Dataset contains 1,281,167 images (/data/ImageNet/train)
+[[34m2025-03-17 00:35:59[0m] Training for 1400 epochs...
+[[34m2025-03-17 00:35:59[0m] Beginning epoch 0...
+Traceback (most recent call last):
+  File "/home/xdhpc/dits/DiT-MoE/train.py", line 300, in <module>
+    main(args) 
+  File "/home/xdhpc/dits/DiT-MoE/train.py", line 234, in main
+    opt.step()
+  File "/home/xdhpc/miniconda3/envs/dits/lib/python3.10/site-packages/torch/optim/optimizer.py", line 385, in wrapper
+    out = func(*args, **kwargs)
+  File "/home/xdhpc/miniconda3/envs/dits/lib/python3.10/site-packages/torch/optim/optimizer.py", line 76, in _use_grad
+    ret = func(self, *args, **kwargs)
+  File "/home/xdhpc/miniconda3/envs/dits/lib/python3.10/site-packages/torch/optim/adamw.py", line 176, in step
+    has_complex = self._init_group(
+  File "/home/xdhpc/miniconda3/envs/dits/lib/python3.10/site-packages/torch/optim/adamw.py", line 123, in _init_group
+    state["exp_avg"] = torch.zeros_like(
+torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 1 has a total capacity of 10.75 GiB of which 11.38 MiB is free. Process 314559 has 6.52 GiB memory in use. Including non-PyTorch memory, this process has 4.20 GiB memory in use. Of the allocated memory 3.86 GiB is allocated by PyTorch, and 60.21 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+[2025-03-17 00:36:06,308] torch.distributed.elastic.multiprocessing.api: [WARNING] Sending process 333367 closing signal SIGTERM
+[2025-03-17 00:36:06,472] torch.distributed.elastic.multiprocessing.api: [ERROR] failed (exitcode: 1) local_rank: 1 (pid: 333368) of binary: /home/xdhpc/miniconda3/envs/dits/bin/python
+Traceback (most recent call last):
+  File "/home/xdhpc/miniconda3/envs/dits/bin/torchrun", line 8, in <module>
+    sys.exit(main())
+  File "/home/xdhpc/miniconda3/envs/dits/lib/python3.10/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 347, in wrapper
+    return f(*args, **kwargs)
+  File "/home/xdhpc/miniconda3/envs/dits/lib/python3.10/site-packages/torch/distributed/run.py", line 812, in main
+    run(args)
+  File "/home/xdhpc/miniconda3/envs/dits/lib/python3.10/site-packages/torch/distributed/run.py", line 803, in run
+    elastic_launch(
+  File "/home/xdhpc/miniconda3/envs/dits/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 135, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/home/xdhpc/miniconda3/envs/dits/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 268, in launch_agent
+    raise ChildFailedError(
+torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
+============================================================
+train.py FAILED
+------------------------------------------------------------
+Failures:
+  <NO_OTHER_FAILURES>
+------------------------------------------------------------
+Root Cause (first observed failure):
+[0]:
+  time      : 2025-03-17_00:36:06
+  host      : xdhpc-HP-Z640-Workstation
+  rank      : 1 (local_rank: 1)
+  exitcode  : 1 (pid: 333368)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+============================================================
